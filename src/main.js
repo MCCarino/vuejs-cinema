@@ -11,7 +11,7 @@ Object.defineProperty(Vue.prototype, '$moment', { get() { return this.$root.mome
 const bus = new Vue();
 Object.defineProperty(Vue.prototype, '$bus', { get() { return this.$root.bus }});
 
-import { checkFilter } from './util/bus';
+import { checkFilter, setDay } from './util/bus';
 
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
@@ -29,13 +29,14 @@ new Vue({
     moment,
     day: moment(),
     bus,
-    checkFilter
+    checkFilter, setDay
   },
   created() {
     this.$http.get('/api').then(response => {
       this.movies = response.data;
     });
     this.$bus.$on('check-filter', checkFilter.bind(this)); 
+    this.$bus.$on('set-day', setDay.bind(this)); 
   },
   router
 });
