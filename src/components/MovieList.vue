@@ -6,8 +6,9 @@
                   v-bind:movie="movie.movie">
         <div class="movie-sessions">
           <div v-for="session in filteredSessions(movie.sessions)" 
-              v-bind:key="session.id" 
-              class="session-time-wrapper" >
+               v-bind:key="session.id" 
+               v-tooltip="{ seats: session.seats }"
+               class="session-time-wrapper tooltip-wrapper" >
             <div class="session-time">{{ formatTime(session.time) }}</div>
           </div>
         </div>

@@ -16,6 +16,9 @@ import { checkFilter, setDay } from './util/bus';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
+import Tooltip from './util/tooltip';
+Vue.use(Tooltip);
+
 import routes from './util/routes';
 
 const router = new VueRouter({ routes });
